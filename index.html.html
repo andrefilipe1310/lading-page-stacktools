@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StackTools | Engenharia Digital para Negócios</title>
+
+    <!-- SEO -->
+    <meta name="description" content="StackTools ajuda empresas de médio porte a escalar vendas e descentralizar a operação com estratégia digital, automação de processos e integração de sistemas.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="StackTools">
+    <meta name="theme-color" content="#161826">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="StackTools">
+    <meta property="og:title" content="StackTools | Engenharia Digital para Negócios">
+    <meta property="og:description" content="Escale vendas e descentralize a operação com estratégia digital, automação e integração de sistemas — para empresas de médio porte.">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="StackTools | Engenharia Digital para Negócios">
+    <meta name="twitter:description" content="Escale vendas e descentralize a operação com estratégia digital, automação e integração de sistemas.">
+
+    <!-- Favicon (monograma StackTools) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 72'%3E%3Crect width='72' height='72' rx='18' fill='%239184d9'/%3E%3Crect x='20' y='26' width='22' height='6' rx='3' fill='%23161826'/%3E%3Crect x='20' y='36' width='32' height='6' rx='3' fill='%23161826'/%3E%3Crect x='20' y='46' width='27' height='6' rx='3' fill='%23161826'/%3E%3C/svg%3E">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web" defer></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        fundo: '#161826',
+                        superficie: '#232532',
+                        texto: '#e9e9ed',
+                        acento: '#9184d9',
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #161826;
+            color: #e9e9ed;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Animações de entrada */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Regra rigorosa: acento apenas em linhas/bordas */
+        .btn-primary {
+            background-color: #e9e9ed;
+            color: #161826;
+            border: 1px solid #e9e9ed;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: transparent;
+            color: #e9e9ed;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: #e9e9ed;
+            border: 1px solid #5a5f73;
+            transition: all 0.3s ease;
+        }
+        .btn-outline:hover {
+            border-color: #9184d9;
+            color: #9184d9;
+        }
+
+        .accent-line-bottom {
+            position: relative;
+        }
+        .accent-line-bottom::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #9184d9;
+            opacity: 0.5;
+        }
+
+        .glow-bg {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(145, 132, 217, 0.05) 0%, rgba(22, 24, 38, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Skeleton Fade Animation */
+        #skeleton-loader {
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+        .skeleton-pulse {
+            animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "StackTools",
+        "description": "Engenharia digital para escalar vendas e descentralizar a operação de empresas de médio porte.",
+        "telephone": "+5581994034502",
+        "areaServed": "BR"
+    }
+    </script>
+</head>
+<body class="relative">
+
+    <!-- Skeleton Loader (HTML/CSS Puro para resposta visual em 0ms) -->
+    <div id="skeleton-loader" class="fixed inset-0 z-[100] bg-[#161826] flex flex-col pointer-events-none">
+        <!-- Header Fake -->
+        <div class="h-20 border-b border-[#232532] flex items-center justify-between px-6 max-w-7xl mx-auto w-full">
+            <div class="w-24 h-6 bg-[#232532] skeleton-pulse rounded"></div>
+            <div class="hidden md:flex gap-8">
+                <div class="w-16 h-4 bg-[#232532] skeleton-pulse rounded"></div>
+                <div class="w-16 h-4 bg-[#232532] skeleton-pulse rounded"></div>
+                <div class="w-16 h-4 bg-[#232532] skeleton-pulse rounded"></div>
+            </div>
+            <div class="w-32 h-10 bg-[#232532] skeleton-pulse rounded"></div>
+        </div>
+        <!-- Hero Fake -->
+        <div class="flex-1 px-6 pt-40 max-w-7xl mx-auto w-full flex flex-col">
+            <div class="w-32 h-6 bg-[#232532] skeleton-pulse rounded-full mb-8"></div>
+            <div class="w-3/4 h-12 md:h-16 bg-[#232532] skeleton-pulse rounded mb-4"></div>
+            <div class="w-1/2 h-12 md:h-16 bg-[#232532] skeleton-pulse rounded mb-8"></div>
+            <div class="w-full md:w-2/3 h-24 bg-[#232532] skeleton-pulse rounded mb-10"></div>
+            <div class="w-48 h-14 bg-[#232532] skeleton-pulse rounded"></div>
+        </div>
+    </div>
+
+    <header class="fixed top-0 w-full z-50 bg-fundo/90 backdrop-blur-md border-b border-superficie">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2.5" aria-label="StackTools — página inicial">
+                <span class="inline-flex flex-col gap-1 w-5" aria-hidden="true">
+                    <span class="h-1 rounded-full bg-acento self-start w-[70%]"></span>
+                    <span class="h-1 rounded-full bg-texto self-end w-full"></span>
+                    <span class="h-1 rounded-full bg-acento self-start w-[85%]"></span>
+                </span>
+                <span class="text-xl font-bold tracking-tight">Stack<span class="text-acento">Tools</span>.</span>
+            </a>
+            <nav class="hidden md:flex gap-8 text-sm font-medium text-texto/70">
+                <a href="#dores" class="hover:text-acento transition-colors">O Desafio</a>
+                <a href="#solucoes" class="hover:text-acento transition-colors">O Protocolo</a>
+                <a href="#resultados" class="hover:text-acento transition-colors">Resultados</a>
+            </nav>
+            <a href="https://wa.me/5581994034502?text=Ol%C3%A1!%20gostaria%20de%20conhecer%20mais%20sobre%20os%20seus%20servi%C3%A7os" target="_blank" class="btn-primary px-5 py-2.5 rounded-sm font-medium text-sm flex items-center gap-2">
+                <i class="ph ph-whatsapp text-lg"></i> Falar com Especialista
+            </a>
+        </div>
+    </header>
+
+    <section class="relative pt-40 pb-32 overflow-hidden flex items-center min-h-screen">
+        <div class="glow-bg -top-40 -left-40"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10 grid md:grid-cols-12 gap-12 items-center">
+            
+            <div class="md:col-span-8 fade-up">
+                <div class="inline-flex items-center gap-2 px-3 py-1 border border-superficie rounded-full text-xs font-medium text-texto/70 mb-8 uppercase tracking-widest">
+                    <span class="w-2 h-2 rounded-full bg-acento"></span>
+                    Lucro & Liberdade
+                </div>
+                
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight mb-8">
+                    Vendas estagnadas e o dono afogado na operação?
+                </h1>
+                
+                <p class="text-lg md:text-xl text-texto/80 max-w-2xl mb-10 leading-relaxed">
+                    Sua tecnologia deveria trabalhar para você, e não o contrário. Ajudamos empresas a <strong>escalar vendas</strong> e <strong>descentralizar a operação</strong> através de estratégias digitais sólidas e automação inteligente.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="https://wa.me/5581994034502?text=Ol%C3%A1!%20gostaria%20de%20conhecer%20mais%20sobre%20os%20seus%20servi%C3%A7os" target="_blank" class="btn-primary px-8 py-4 rounded-sm font-semibold text-center flex items-center justify-center gap-2">
+                        <i class="ph ph-whatsapp text-xl"></i> Descobrir como escalar
+                    </a>
+                    <a href="#resultados" class="btn-outline px-8 py-4 rounded-sm font-semibold text-center flex items-center justify-center gap-2">
+                        Ver resultados reais <i class="ph ph-arrow-down"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="md:col-span-4 hidden md:block fade-up" style="transition-delay: 200ms;">
+                <div class="relative w-full aspect-square border border-superficie rounded-lg bg-superficie/30 flex items-center justify-center p-8">
+                    <!-- Decorate lines with accent -->
+                    <div class="absolute top-0 left-8 w-[1px] h-full bg-acento/10"></div>
+                    <div class="absolute top-8 left-0 w-full h-[1px] bg-acento/10"></div>
+                    
+                    <div class="w-full space-y-4">
+                        <div class="h-2 w-1/3 bg-superficie rounded"></div>
+                        <div class="h-12 w-full border border-acento/30 rounded flex items-center px-4 relative overflow-hidden">
+                            <div class="absolute left-0 top-0 bottom-0 w-1/2 bg-acento/10"></div>
+                            <span class="text-xs font-mono text-acento">Operação Descentralizada</span>
+                        </div>
+                        <div class="h-2 w-2/3 bg-superficie rounded"></div>
+                        <div class="h-2 w-1/2 bg-superficie rounded"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="dores" class="py-32 bg-superficie/50 border-y border-superficie relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-3xl mb-20 fade-up">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 tracking-tight">O preço invisível da desorganização.</h2>
+                <p class="text-xl text-texto/70">O mercado mudou. Se a sua empresa ainda opera como há 5 anos, estes são os sintomas de que o teto de vidro foi atingido.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Dor 1 -->
+                <div class="bg-fundo p-10 border border-superficie hover:border-acento/50 transition-colors rounded-sm fade-up">
+                    <i class="ph ph-trend-down text-4xl text-acento mb-6"></i>
+                    <h3 class="text-xl font-semibold mb-4">Teto de Vendas Atingido</h3>
+                    <p class="text-texto/70 leading-relaxed">
+                        A captação está estagnada. O mercado exige uma estratégia digital estruturada e não apenas ações isoladas. Sem um canal de vendas digital previsível, a empresa para de crescer.
+                    </p>
+                </div>
+
+                <!-- Dor 2 -->
+                <div class="bg-fundo p-10 border border-superficie hover:border-acento/50 transition-colors rounded-sm fade-up" style="transition-delay: 100ms;">
+                    <i class="ph ph-lock-key text-4xl text-acento mb-6"></i>
+                    <h3 class="text-xl font-semibold mb-4">A Prisão do Dono</h3>
+                    <p class="text-texto/70 leading-relaxed">
+                        Se cada aprovação, processo ou nova venda depende da sua validação, você não tem um negócio, tem um emprego. A falta de automação rouba seu tempo estratégico.
+                    </p>
+                </div>
+
+                <!-- Dor 3 -->
+                <div class="bg-fundo p-10 border border-superficie hover:border-acento/50 transition-colors rounded-sm fade-up" style="transition-delay: 200ms;">
+                    <i class="ph ph-coins text-4xl text-acento mb-6"></i>
+                    <h3 class="text-xl font-semibold mb-4">Custos Ocultos e Desperdício</h3>
+                    <p class="text-texto/70 leading-relaxed">
+                        Trabalho braçal, sistemas que não se integram e controle em planilhas frágeis. A desorganização exige equipes inchadas e minam silenciosamente o seu capital de giro.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center fade-up">
+                <a href="https://wa.me/5581994034502?text=Ol%C3%A1!%20gostaria%20de%20conhecer%20mais%20sobre%20os%20seus%20servi%C3%A7os" target="_blank" class="inline-flex items-center justify-center gap-2 btn-primary px-8 py-4 rounded-sm font-semibold text-lg hover:scale-105 transition-transform">
+                    <i class="ph ph-whatsapp text-2xl"></i> Resolver esses gargalos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="solucoes" class="py-32 relative">
+        <div class="glow-bg top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2"></div>
+        
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-24 fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">O Protocolo de Escala</h2>
+                <p class="text-xl text-texto/70 max-w-2xl mx-auto">Não somos uma agência comum. Implementamos um ecossistema tecnológico focado em duas métricas: botar mais dinheiro no caixa e devolver o tempo do dono.</p>
+            </div>
+
+            <div class="space-y-32">
+                <!-- Solução 1 -->
+                <div class="grid md:grid-cols-2 gap-16 items-center fade-up">
+                    <div class="order-2 md:order-1 relative aspect-[4/3] bg-superficie border border-superficie flex items-center justify-center p-12">
+                        <div class="w-full h-full border border-acento/20 flex flex-col">
+                            <div class="h-10 border-b border-acento/20 flex items-center px-4 gap-2">
+                                <div class="w-2 h-2 rounded-full bg-texto/20"></div>
+                                <div class="w-2 h-2 rounded-full bg-texto/20"></div>
+                                <div class="w-2 h-2 rounded-full bg-texto/20"></div>
+                            </div>
+                            <div class="p-6 flex-1 flex flex-col gap-4">
+                                <div class="h-4 w-1/4 bg-texto/10"></div>
+                                <div class="flex-1 border border-acento/30 border-dashed flex items-center justify-center text-acento font-mono text-sm text-center px-4">Análise Estratégica &<br>Ativos Digitais</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-1 md:order-2">
+                        <div class="text-acento font-mono text-sm mb-4 tracking-wider">01 // ESTRATÉGIA E AQUISIÇÃO</div>
+                        <h3 class="text-3xl font-bold mb-6">Estratégia Digital Estruturada</h3>
+                        <p class="text-texto/70 text-lg leading-relaxed mb-6">
+                            Não empurramos "sites" engessados. Iniciamos com uma análise profunda do seu mercado e tendências. A partir daí, definimos e construímos o ativo ideal — seja um Portal B2B, E-commerce de alta performance, SaaS ou um CRM integrado — focado puramente em tracionar novas vendas.
+                        </p>
+                        <ul class="space-y-3 text-texto/80">
+                            <li class="flex items-start gap-3"><i class="ph ph-check text-acento mt-1"></i> Análise de dados para decisões precisas.</li>
+                            <li class="flex items-start gap-3"><i class="ph ph-check text-acento mt-1"></i> Plataformas desenhadas para converter visitantes em caixa.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Solução 2 -->
+                <div class="grid md:grid-cols-2 gap-16 items-center fade-up">
+                    <div>
+                        <div class="text-acento font-mono text-sm mb-4 tracking-wider">02 // AUTOMAÇÃO OPERACIONAL</div>
+                        <h3 class="text-3xl font-bold mb-6">A Devolução do seu Tempo</h3>
+                        <p class="text-texto/70 text-lg leading-relaxed mb-6">
+                            Substituímos o trabalho braçal da sua equipe por processos automatizados. Ao mapear e digitalizar fluxos críticos, removemos os gargalos humanos, reduzimos custos com falhas e permitimos que você tenha tempo para focar exclusivamente na expansão do negócio.
+                        </p>
+                        <ul class="space-y-3 text-texto/80">
+                            <li class="flex items-start gap-3"><i class="ph ph-check text-acento mt-1"></i> Contratos, faturamentos e processos em piloto automático.</li>
+                            <li class="flex items-start gap-3"><i class="ph ph-check text-acento mt-1"></i> Operação descentralizada e independente da diretoria.</li>
+                        </ul>
+                    </div>
+                    <div class="relative aspect-[4/3] bg-superficie border border-superficie flex items-center justify-center p-12">
+                         <div class="w-full flex gap-4 items-center justify-center">
+                            <div class="w-16 h-16 border border-texto/20 rounded flex items-center justify-center"><i class="ph ph-user text-2xl text-texto/50"></i></div>
+                            <div class="h-[1px] w-12 bg-acento relative"><div class="absolute right-0 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-acento rotate-45"></div></div>
+                            <div class="w-16 h-16 border border-acento rounded flex items-center justify-center bg-acento/10"><i class="ph ph-lightning text-2xl text-acento"></i></div>
+                            <div class="h-[1px] w-12 bg-acento relative"><div class="absolute right-0 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-acento rotate-45"></div></div>
+                            <div class="w-16 h-16 border border-texto/20 rounded flex items-center justify-center"><i class="ph ph-check-circle text-2xl text-texto/50"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Solução 3 -->
+                <div class="grid md:grid-cols-2 gap-16 items-center fade-up">
+                    <div class="order-2 md:order-1 relative aspect-[4/3] bg-superficie border border-superficie flex items-center justify-center p-12">
+                         <div class="w-full h-full border border-acento/20 p-6 flex flex-col gap-4">
+                            <div class="flex justify-between items-end h-32 border-b border-acento/20 pb-4">
+                                <div class="w-1/6 bg-texto/10 h-1/3"></div>
+                                <div class="w-1/6 bg-texto/10 h-2/3"></div>
+                                <div class="w-1/6 bg-acento/80 h-full relative">
+                                    <div class="absolute -top-6 left-0 text-xs text-texto w-full text-center">+32%</div>
+                                </div>
+                                <div class="w-1/6 bg-texto/10 h-1/2"></div>
+                            </div>
+                            <div class="h-4 w-1/3 bg-texto/10"></div>
+                        </div>
+                    </div>
+                    <div class="order-1 md:order-2">
+                        <div class="text-acento font-mono text-sm mb-4 tracking-wider">03 // INTEGRAÇÃO DE SISTEMAS</div>
+                        <h3 class="text-3xl font-bold mb-6">Visibilidade e Controle Total</h3>
+                        <p class="text-texto/70 text-lg leading-relaxed mb-6">
+                            Acabe com o retrabalho e o lançamento de dados duplicados. Integramos seus ERPs, CRMs e plataformas de pagamento para que conversem entre si. O resultado? Um dashboard gerencial preciso que permite previsibilidade financeira real.
+                        </p>
+                        <ul class="space-y-3 text-texto/80">
+                            <li class="flex items-start gap-3"><i class="ph ph-check text-acento mt-1"></i> Fim das planilhas frágeis e erros de digitação.</li>
+                            <li class="flex items-start gap-3"><i class="ph ph-check text-acento mt-1"></i> Dados unificados de vendas, estoque e fluxo de caixa.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-24 text-center fade-up">
+                <a href="https://wa.me/5581994034502?text=Ol%C3%A1!%20gostaria%20de%20conhecer%20mais%20sobre%20os%20seus%20servi%C3%A7os" target="_blank" class="inline-flex items-center justify-center gap-2 btn-primary px-8 py-4 rounded-sm font-semibold text-lg hover:scale-105 transition-transform">
+                    <i class="ph ph-whatsapp text-2xl"></i> Quero aplicar este protocolo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="resultados" class="py-32 bg-superficie/30 border-t border-superficie relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20 fade-up">
+                <span class="text-acento font-mono text-sm mb-4 block tracking-wider">O QUE ENTREGAMOS</span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">O Código Traduzido em Lucro</h2>
+                <p class="text-xl text-texto/70 max-w-2xl mx-auto">Resultados reais alcançados através da estruturação digital e automação em empresas de médio porte.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Resultado 1 -->
+                <div class="bg-fundo p-8 border border-superficie rounded-sm flex flex-col h-full fade-up relative group">
+                    <div class="absolute top-0 left-0 w-full h-[2px] bg-superficie group-hover:bg-acento transition-colors"></div>
+                    <div class="text-acento font-mono text-xs tracking-wider mb-6">01. AUTOMAÇÃO DE PROCESSOS</div>
+                    <h3 class="text-2xl font-bold mb-4">De 2 dias para apenas 30 minutos.</h3>
+                    <p class="text-texto/70 mb-8 flex-grow">
+                        Mapeamos e automatizamos todo o fluxo de análise de crédito, aprovação e emissão de contratos comerciais de um cliente B2B. A equipe deixou de fazer trabalho de robô.
+                    </p>
+                    <div class="pt-6 border-t border-superficie">
+                        <div class="text-sm text-texto/50 mb-1">Impacto Financeiro</div>
+                        <div class="font-bold text-xl text-texto">+R$ 850 mil/ano em vendas <br><span class="text-sm font-normal text-texto/70">recuperadas por agilidade no fechamento.</span></div>
+                    </div>
+                </div>
+
+                <!-- Resultado 2 -->
+                <div class="bg-fundo p-8 border border-superficie rounded-sm flex flex-col h-full fade-up relative group" style="transition-delay: 100ms;">
+                    <div class="absolute top-0 left-0 w-full h-[2px] bg-superficie group-hover:bg-acento transition-colors"></div>
+                    <div class="text-acento font-mono text-xs tracking-wider mb-6">02. ESTRATÉGIA E AQUISIÇÃO</div>
+                    <h3 class="text-2xl font-bold mb-4">Portal B2B de Alta Conversão.</h3>
+                    <p class="text-texto/70 mb-8 flex-grow">
+                        Substituímos um site institucional engessado por uma plataforma de captação ativa, integrada com CRM para qualificação automática dos leads industriais.
+                    </p>
+                    <div class="pt-6 border-t border-superficie">
+                        <div class="text-sm text-texto/50 mb-1">Impacto Operacional</div>
+                        <div class="font-bold text-xl text-texto">Aumento de 215% <br><span class="text-sm font-normal text-texto/70">no volume de leads qualificados (MQLs).</span></div>
+                    </div>
+                </div>
+
+                <!-- Resultado 3 -->
+                <div class="bg-fundo p-8 border border-superficie rounded-sm flex flex-col h-full fade-up relative group" style="transition-delay: 200ms;">
+                    <div class="absolute top-0 left-0 w-full h-[2px] bg-superficie group-hover:bg-acento transition-colors"></div>
+                    <div class="text-acento font-mono text-xs tracking-wider mb-6">03. INTEGRAÇÃO DE SISTEMAS</div>
+                    <h3 class="text-2xl font-bold mb-4">Sincronização ERP + E-commerce.</h3>
+                    <p class="text-texto/70 mb-8 flex-grow">
+                        Conectamos as plataformas de vendas virtuais diretamente ao ERP legado da empresa. Eliminamos o lançamento duplo de notas e a quebra de estoque por dados desatualizados.
+                    </p>
+                    <div class="pt-6 border-t border-superficie">
+                        <div class="text-sm text-texto/50 mb-1">Redução de Custos</div>
+                        <div class="font-bold text-xl text-texto">R$ 140.000 economizados <br><span class="text-sm font-normal text-texto/70">em devoluções e tempo operacional (anual).</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-20 text-center fade-up">
+                <p class="text-texto/70 mb-6 text-lg">Sua empresa pode ser o próximo caso de sucesso.</p>
+                <a href="https://wa.me/5581994034502?text=Ol%C3%A1!%20gostaria%20de%20conhecer%20mais%20sobre%20os%20seus%20servi%C3%A7os" target="_blank" class="inline-flex items-center justify-center gap-2 btn-primary px-8 py-4 rounded-sm font-semibold text-lg hover:scale-105 transition-transform">
+                    <i class="ph ph-whatsapp text-2xl"></i> Agendar Diagnóstico Gratuito
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="py-32 relative overflow-hidden">
+        <div class="glow-bg bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2"></div>
+        <div class="max-w-3xl mx-auto px-6 text-center relative z-10 fade-up">
+            <span class="text-acento font-mono text-sm mb-4 block tracking-wider">O PRÓXIMO PASSO</span>
+            <h2 class="text-4xl md:text-6xl font-bold mb-8 tracking-tight">Pare de apagar incêndios.</h2>
+            <p class="text-xl text-texto/70 mb-12 leading-relaxed">
+                Agende uma reunião estratégica conosco via WhatsApp. Faremos um diagnóstico profundo da sua operação atual e desenharemos a arquitetura tecnológica necessária para seu negócio voltar a escalar.
+            </p>
+            
+            <a href="https://wa.me/5581994034502?text=Ol%C3%A1!%20gostaria%20de%20conhecer%20mais%20sobre%20os%20seus%20servi%C3%A7os" target="_blank" class="inline-flex items-center justify-center gap-3 w-full sm:w-auto btn-primary px-10 py-5 rounded-sm font-bold text-xl hover:scale-105 transition-transform shadow-[0_0_30px_rgba(145,132,217,0.2)]">
+                <i class="ph ph-whatsapp text-3xl"></i>
+                Solicitar Diagnóstico da Operação
+            </a>
+            
+            <p class="text-sm text-texto/50 mt-8">
+                Sem compromisso. Reunião de 30 minutos focada exclusivamente no seu modelo de negócio.
+            </p>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-superficie bg-[#10121c] text-center">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2.5">
+                <span class="inline-flex flex-col gap-1 w-5" aria-hidden="true">
+                    <span class="h-1 rounded-full bg-acento self-start w-[70%]"></span>
+                    <span class="h-1 rounded-full bg-texto self-end w-full"></span>
+                    <span class="h-1 rounded-full bg-acento self-start w-[85%]"></span>
+                </span>
+                <span class="text-xl font-bold tracking-tight">Stack<span class="text-acento">Tools</span>.</span>
+            </div>
+            <p class="text-sm text-texto/50">
+                &copy; 2026 StackTools Engenharia Digital. Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Controle do Skeleton Loader (Performance de Carregamento) ---
+        // Assim que o navegador baixar as fontes e o script do Tailwind, removemos o skeleton suavemente.
+        window.addEventListener('load', () => {
+            const skeleton = document.getElementById('skeleton-loader');
+            if(skeleton) {
+                skeleton.style.opacity = '0';
+                skeleton.style.visibility = 'hidden';
+                setTimeout(() => skeleton.remove(), 400); // Limpa o DOM
+            }
+        });
+
+        // Fallback de segurança: se a rede do cliente travar e demorar, o site aparece de qualquer forma após 2.5s
+        setTimeout(() => {
+            const skeleton = document.getElementById('skeleton-loader');
+            if(skeleton && skeleton.style.opacity !== '0') {
+                skeleton.style.opacity = '0';
+                setTimeout(() => skeleton.remove(), 400);
+            }
+        }, 2500);
+
+        // Simple Intersection Observer for scroll animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const fadeElements = document.querySelectorAll('.fade-up');
+            fadeElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
