@@ -10,6 +10,7 @@
     <meta name="robots" content="index, follow">
     <meta name="author" content="StackTools">
     <meta name="theme-color" content="#161826">
+    <link rel="canonical" href="https://www.stacktools.com.br/">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
@@ -26,145 +27,26 @@
     <!-- Favicon (monograma StackTools) -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 72'%3E%3Crect width='72' height='72' rx='18' fill='%239184d9'/%3E%3Crect x='20' y='26' width='22' height='6' rx='3' fill='%23161826'/%3E%3Crect x='20' y='36' width='32' height='6' rx='3' fill='%23161826'/%3E%3Crect x='20' y='46' width='27' height='6' rx='3' fill='%23161826'/%3E%3C/svg%3E">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/@phosphor-icons/web" defer></script>
+    <!-- Fonte hospedada localmente: variável, subsetada (latim + acentos pt-BR) e em WOFF2 (~75KB) -->
+    <link rel="preload" href="inter-var-subset.woff2" as="font" type="font/woff2" crossorigin>
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        fundo: '#161826',
-                        superficie: '#232532',
-                        texto: '#e9e9ed',
-                        acento: '#9184d9',
-                    },
-                    backgroundImage: {
-                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        body {
-            background-color: #161826;
-            color: #e9e9ed;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Animações de entrada */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Regra rigorosa: acento apenas em linhas/bordas */
-        .btn-primary {
-            background-color: #e9e9ed;
-            color: #161826;
-            border: 1px solid #e9e9ed;
-            transition: all 0.3s ease;
-        }
-        .btn-primary:hover {
-            background-color: transparent;
-            color: #e9e9ed;
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            color: #e9e9ed;
-            border: 1px solid #5a5f73;
-            transition: all 0.3s ease;
-        }
-        .btn-outline:hover {
-            border-color: #9184d9;
-            color: #9184d9;
-        }
-
-        .accent-line-bottom {
-            position: relative;
-        }
-        .accent-line-bottom::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #9184d9;
-            opacity: 0.5;
-        }
-
-        .glow-bg {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(145, 132, 217, 0.05) 0%, rgba(22, 24, 38, 0) 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Skeleton Fade Animation */
-        #skeleton-loader {
-            transition: opacity 0.4s ease, visibility 0.4s ease;
-        }
-        .skeleton-pulse {
-            animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: .5; }
-        }
-    </style>
+    <!-- CSS compilado e purgado (build estático — sem compilador JIT no navegador) -->
+    <link rel="stylesheet" href="styles.css">
 
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "Organization",
+        "@type": "LocalBusiness",
         "name": "StackTools",
+        "url": "https://www.stacktools.com.br/",
         "description": "Engenharia digital para escalar vendas e descentralizar a operação de empresas de médio porte.",
         "telephone": "+5581994034502",
-        "areaServed": "BR"
+        "areaServed": "BR",
+        "priceRange": "$$"
     }
     </script>
 </head>
 <body class="relative">
-
-    <!-- Skeleton Loader (HTML/CSS Puro para resposta visual em 0ms) -->
-    <div id="skeleton-loader" class="fixed inset-0 z-[100] bg-[#161826] flex flex-col pointer-events-none">
-        <!-- Header Fake -->
-        <div class="h-20 border-b border-[#232532] flex items-center justify-between px-6 max-w-7xl mx-auto w-full">
-            <div class="w-24 h-6 bg-[#232532] skeleton-pulse rounded"></div>
-            <div class="hidden md:flex gap-8">
-                <div class="w-16 h-4 bg-[#232532] skeleton-pulse rounded"></div>
-                <div class="w-16 h-4 bg-[#232532] skeleton-pulse rounded"></div>
-                <div class="w-16 h-4 bg-[#232532] skeleton-pulse rounded"></div>
-            </div>
-            <div class="w-32 h-10 bg-[#232532] skeleton-pulse rounded"></div>
-        </div>
-        <!-- Hero Fake -->
-        <div class="flex-1 px-6 pt-40 max-w-7xl mx-auto w-full flex flex-col">
-            <div class="w-32 h-6 bg-[#232532] skeleton-pulse rounded-full mb-8"></div>
-            <div class="w-3/4 h-12 md:h-16 bg-[#232532] skeleton-pulse rounded mb-4"></div>
-            <div class="w-1/2 h-12 md:h-16 bg-[#232532] skeleton-pulse rounded mb-8"></div>
-            <div class="w-full md:w-2/3 h-24 bg-[#232532] skeleton-pulse rounded mb-10"></div>
-            <div class="w-48 h-14 bg-[#232532] skeleton-pulse rounded"></div>
-        </div>
-    </div>
 
     <header class="fixed top-0 w-full z-50 bg-fundo/90 backdrop-blur-md border-b border-superficie">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -176,51 +58,74 @@
                 </span>
                 <span class="text-xl font-bold tracking-tight">Stack<span class="text-acento">Tools</span>.</span>
             </a>
+
             <nav class="hidden md:flex gap-8 text-sm font-medium text-texto/70">
                 <a href="#dores" class="hover:text-acento transition-colors">O Desafio</a>
                 <a href="#solucoes" class="hover:text-acento transition-colors">O Protocolo</a>
                 <a href="#resultados" class="hover:text-acento transition-colors">Resultados</a>
             </nav>
-            <a href="https://wa.me/5581994034502?text=Ol%C3%A1!%20gostaria%20de%20conhecer%20mais%20sobre%20os%20seus%20servi%C3%A7os" target="_blank" class="btn-primary px-5 py-2.5 rounded-sm font-medium text-sm flex items-center gap-2">
-                <i class="ph ph-whatsapp text-lg"></i> Falar com Especialista
-            </a>
+
+            <div class="flex items-center gap-3">
+                <a href="https://wa.me/5581994034502?text=Ol%C3%A1!%20gostaria%20de%20conhecer%20mais%20sobre%20os%20seus%20servi%C3%A7os" target="_blank" rel="noopener" class="hidden sm:flex btn-primary px-5 py-2.5 rounded-sm font-medium text-sm items-center gap-2">
+                    <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.08c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.12-.42-.13-.95-.3-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.17-1.56-1.17-2.98s.74-2.11 1-2.4c.26-.29.57-.36.76-.36s.38 0 .55.01c.18.01.41-.07.64.49.24.58.81 2.01.88 2.15.07.15.12.32.02.51-.1.19-.15.31-.3.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.77 1.27 1.65 2.06 1.14 1.02 2.1 1.34 2.39 1.49.29.15.46.13.63-.05.17-.19.71-.83.9-1.11.19-.29.38-.24.63-.14.26.1 1.64.77 1.92.91.29.14.48.21.55.33.07.12.07.68-.17 1.37Z"/></svg>
+                    Falar com Especialista
+                </a>
+
+                <button id="menu-toggle" type="button" class="md:hidden inline-flex items-center justify-center w-10 h-10 border border-superficie rounded-sm" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menu">
+                    <svg class="icon-open w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+                    <svg class="icon-close w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="md:hidden border-t border-superficie bg-fundo">
+            <nav class="flex flex-col px-6 py-4 gap-1 text-base font-medium text-texto/80">
+                <a href="#dores" class="py-3 border-b border-superficie">O Desafio</a>
+                <a href="#solucoes" class="py-3 border-b border-superficie">O Protocolo</a>
+                <a href="#resultados" class="py-3 border-b border-superficie">Resultados</a>
+                <a href="https://wa.me/5581994034502?text=Ol%C3%A1!%20gostaria%20de%20conhecer%20mais%20sobre%20os%20seus%20servi%C3%A7os" target="_blank" rel="noopener" class="mt-4 mb-2 btn-primary px-5 py-3 rounded-sm font-medium text-sm flex items-center justify-center gap-2">
+                    <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.08c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.12-.42-.13-.95-.3-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.17-1.56-1.17-2.98s.74-2.11 1-2.4c.26-.29.57-.36.76-.36s.38 0 .55.01c.18.01.41-.07.64.49.24.58.81 2.01.88 2.15.07.15.12.32.02.51-.1.19-.15.31-.3.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.77 1.27 1.65 2.06 1.14 1.02 2.1 1.34 2.39 1.49.29.15.46.13.63-.05.17-.19.71-.83.9-1.11.19-.29.38-.24.63-.14.26.1 1.64.77 1.92.91.29.14.48.21.55.33.07.12.07.68-.17 1.37Z"/></svg>
+                    Falar com Especialista
+                </a>
+            </nav>
         </div>
     </header>
 
     <section class="relative pt-40 pb-32 overflow-hidden flex items-center min-h-screen">
         <div class="glow-bg -top-40 -left-40"></div>
         <div class="max-w-7xl mx-auto px-6 relative z-10 grid md:grid-cols-12 gap-12 items-center">
-            
+
             <div class="md:col-span-8 fade-up">
                 <div class="inline-flex items-center gap-2 px-3 py-1 border border-superficie rounded-full text-xs font-medium text-texto/70 mb-8 uppercase tracking-widest">
                     <span class="w-2 h-2 rounded-full bg-acento"></span>
                     Lucro & Liberdade
                 </div>
-                
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight mb-8">
+
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight mb-8">
                     Vendas estagnadas e o dono afogado na operação?
                 </h1>
-                
+
                 <p class="text-lg md:text-xl text-texto/80 max-w-2xl mb-10 leading-relaxed">
                     Sua tecnologia deveria trabalhar para você, e não o contrário. Ajudamos empresas a <strong>escalar vendas</strong> e <strong>descentralizar a operação</strong> através de estratégias digitais sólidas e automação inteligente.
                 </p>
-                
+
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="https://wa.me/5581994034502?text=Ol%C3%A1!%20gostaria%20de%20conhecer%20mais%20sobre%20os%20seus%20servi%C3%A7os" target="_blank" class="btn-primary px-8 py-4 rounded-sm font-semibold text-center flex items-center justify-center gap-2">
-                        <i class="ph ph-whatsapp text-xl"></i> Descobrir como escalar
+                    <a href="https://wa.me/5581994034502?text=Ol%C3%A1!%20gostaria%20de%20conhecer%20mais%20sobre%20os%20seus%20servi%C3%A7os" target="_blank" rel="noopener" class="btn-primary px-8 py-4 rounded-sm font-semibold text-center flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.08c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.12-.42-.13-.95-.3-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.17-1.56-1.17-2.98s.74-2.11 1-2.4c.26-.29.57-.36.76-.36s.38 0 .55.01c.18.01.41-.07.64.49.24.58.81 2.01.88 2.15.07.15.12.32.02.51-.1.19-.15.31-.3.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.77 1.27 1.65 2.06 1.14 1.02 2.1 1.34 2.39 1.49.29.15.46.13.63-.05.17-.19.71-.83.9-1.11.19-.29.38-.24.63-.14.26.1 1.64.77 1.92.91.29.14.48.21.55.33.07.12.07.68-.17 1.37Z"/></svg>
+                        Descobrir como escalar
                     </a>
                     <a href="#resultados" class="btn-outline px-8 py-4 rounded-sm font-semibold text-center flex items-center justify-center gap-2">
-                        Ver resultados reais <i class="ph ph-arrow-down"></i>
+                        Ver resultados reais
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
                     </a>
                 </div>
             </div>
 
             <div class="md:col-span-4 hidden md:block fade-up" style="transition-delay: 200ms;">
                 <div class="relative w-full aspect-square border border-superficie rounded-lg bg-superficie/30 flex items-center justify-center p-8">
-                    <!-- Decorate lines with accent -->
                     <div class="absolute top-0 left-8 w-[1px] h-full bg-acento/10"></div>
                     <div class="absolute top-8 left-0 w-full h-[1px] bg-acento/10"></div>
-                    
+
                     <div class="w-full space-y-4">
                         <div class="h-2 w-1/3 bg-superficie rounded"></div>
                         <div class="h-12 w-full border border-acento/30 rounded flex items-center px-4 relative overflow-hidden">
@@ -236,35 +141,32 @@
         </div>
     </section>
 
-    <section id="dores" class="py-32 bg-superficie/50 border-y border-superficie relative">
+    <section id="dores" class="py-24 md:py-32 bg-superficie/50 border-y border-superficie relative">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="max-w-3xl mb-20 fade-up">
+            <div class="max-w-3xl mb-16 md:mb-20 fade-up">
                 <h2 class="text-3xl md:text-5xl font-bold mb-6 tracking-tight">O preço invisível da desorganização.</h2>
                 <p class="text-xl text-texto/70">O mercado mudou. Se a sua empresa ainda opera como há 5 anos, estes são os sintomas de que o teto de vidro foi atingido.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Dor 1 -->
-                <div class="bg-fundo p-10 border border-superficie hover:border-acento/50 transition-colors rounded-sm fade-up">
-                    <i class="ph ph-trend-down text-4xl text-acento mb-6"></i>
+                <div class="bg-fundo p-8 md:p-10 border border-superficie hover:border-acento/50 transition-colors rounded-sm fade-up">
+                    <svg class="w-10 h-10 text-acento mb-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7l6 6 4-4 8 8M15 17h6v-6"/></svg>
                     <h3 class="text-xl font-semibold mb-4">Teto de Vendas Atingido</h3>
                     <p class="text-texto/70 leading-relaxed">
                         A captação está estagnada. O mercado exige uma estratégia digital estruturada e não apenas ações isoladas. Sem um canal de vendas digital previsível, a empresa para de crescer.
                     </p>
                 </div>
 
-                <!-- Dor 2 -->
-                <div class="bg-fundo p-10 border border-superficie hover:border-acento/50 transition-colors rounded-sm fade-up" style="transition-delay: 100ms;">
-                    <i class="ph ph-lock-key text-4xl text-acento mb-6"></i>
+                <div class="bg-fundo p-8 md:p-10 border border-superficie hover:border-acento/50 transition-colors rounded-sm fade-up" style="transition-delay: 100ms;">
+                    <svg class="w-10 h-10 text-acento mb-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="1"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
                     <h3 class="text-xl font-semibold mb-4">A Prisão do Dono</h3>
                     <p class="text-texto/70 leading-relaxed">
                         Se cada aprovação, processo ou nova venda depende da sua validação, você não tem um negócio, tem um emprego. A falta de automação rouba seu tempo estratégico.
                     </p>
                 </div>
 
-                <!-- Dor 3 -->
-                <div class="bg-fundo p-10 border border-superficie hover:border-acento/50 transition-colors rounded-sm fade-up" style="transition-delay: 200ms;">
-                    <i class="ph ph-coins text-4xl text-acento mb-6"></i>
+                <div class="bg-fundo p-8 md:p-10 border border-superficie hover:border-acento/50 transition-colors rounded-sm fade-up" style="transition-delay: 200ms;">
+                    <svg class="w-10 h-10 text-acento mb-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="5"/><circle cx="16" cy="16" r="5"/><path d="M8 8l8 8" opacity="0"/></svg>
                     <h3 class="text-xl font-semibold mb-4">Custos Ocultos e Desperdício</h3>
                     <p class="text-texto/70 leading-relaxed">
                         Trabalho braçal, sistemas que não se integram e controle em planilhas frágeis. A desorganização exige equipes inchadas e minam silenciosamente o seu capital de giro.
@@ -273,26 +175,26 @@
             </div>
 
             <div class="mt-16 text-center fade-up">
-                <a href="https://wa.me/5581994034502?text=Ol%C3%A1!%20gostaria%20de%20conhecer%20mais%20sobre%20os%20seus%20servi%C3%A7os" target="_blank" class="inline-flex items-center justify-center gap-2 btn-primary px-8 py-4 rounded-sm font-semibold text-lg hover:scale-105 transition-transform">
-                    <i class="ph ph-whatsapp text-2xl"></i> Resolver esses gargalos
+                <a href="https://wa.me/5581994034502?text=Ol%C3%A1!%20gostaria%20de%20conhecer%20mais%20sobre%20os%20seus%20servi%C3%A7os" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 btn-primary px-8 py-4 rounded-sm font-semibold text-lg hover:scale-105 transition-transform">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.08c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.12-.42-.13-.95-.3-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.17-1.56-1.17-2.98s.74-2.11 1-2.4c.26-.29.57-.36.76-.36s.38 0 .55.01c.18.01.41-.07.64.49.24.58.81 2.01.88 2.15.07.15.12.32.02.51-.1.19-.15.31-.3.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.77 1.27 1.65 2.06 1.14 1.02 2.1 1.34 2.39 1.49.29.15.46.13.63-.05.17-.19.71-.83.9-1.11.19-.29.38-.24.63-.14.26.1 1.64.77 1.92.91.29.14.48.21.55.33.07.12.07.68-.17 1.37Z"/></svg>
+                    Resolver esses gargalos
                 </a>
             </div>
         </div>
     </section>
 
-    <section id="solucoes" class="py-32 relative">
+    <section id="solucoes" class="py-24 md:py-32 relative">
         <div class="glow-bg top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2"></div>
-        
+
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-24 fade-up">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">O Protocolo de Escala</h2>
+            <div class="text-center mb-16 md:mb-24 fade-up">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight">O Protocolo de Escala</h2>
                 <p class="text-xl text-texto/70 max-w-2xl mx-auto">Não somos uma agência comum. Implementamos um ecossistema tecnológico focado em duas métricas: botar mais dinheiro no caixa e devolver o tempo do dono.</p>
             </div>
 
-            <div class="space-y-32">
-                <!-- Solução 1 -->
-                <div class="grid md:grid-cols-2 gap-16 items-center fade-up">
-                    <div class="order-2 md:order-1 relative aspect-[4/3] bg-superficie border border-superficie flex items-center justify-center p-12">
+            <div class="space-y-20 md:space-y-32">
+                <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center fade-up">
+                    <div class="order-2 md:order-1 relative aspect-[4/3] bg-superficie border border-superficie flex items-center justify-center p-8 md:p-12">
                         <div class="w-full h-full border border-acento/20 flex flex-col">
                             <div class="h-10 border-b border-acento/20 flex items-center px-4 gap-2">
                                 <div class="w-2 h-2 rounded-full bg-texto/20"></div>
@@ -307,44 +209,60 @@
                     </div>
                     <div class="order-1 md:order-2">
                         <div class="text-acento font-mono text-sm mb-4 tracking-wider">01 // ESTRATÉGIA E AQUISIÇÃO</div>
-                        <h3 class="text-3xl font-bold mb-6">Estratégia Digital Estruturada</h3>
+                        <h3 class="text-2xl md:text-3xl font-bold mb-6">Estratégia Digital Estruturada</h3>
                         <p class="text-texto/70 text-lg leading-relaxed mb-6">
                             Não empurramos "sites" engessados. Iniciamos com uma análise profunda do seu mercado e tendências. A partir daí, definimos e construímos o ativo ideal — seja um Portal B2B, E-commerce de alta performance, SaaS ou um CRM integrado — focado puramente em tracionar novas vendas.
                         </p>
                         <ul class="space-y-3 text-texto/80">
-                            <li class="flex items-start gap-3"><i class="ph ph-check text-acento mt-1"></i> Análise de dados para decisões precisas.</li>
-                            <li class="flex items-start gap-3"><i class="ph ph-check text-acento mt-1"></i> Plataformas desenhadas para converter visitantes em caixa.</li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-acento mt-1 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                                Análise de dados para decisões precisas.
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-acento mt-1 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                                Plataformas desenhadas para converter visitantes em caixa.
+                            </li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Solução 2 -->
-                <div class="grid md:grid-cols-2 gap-16 items-center fade-up">
+                <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center fade-up">
                     <div>
                         <div class="text-acento font-mono text-sm mb-4 tracking-wider">02 // AUTOMAÇÃO OPERACIONAL</div>
-                        <h3 class="text-3xl font-bold mb-6">A Devolução do seu Tempo</h3>
+                        <h3 class="text-2xl md:text-3xl font-bold mb-6">A Devolução do seu Tempo</h3>
                         <p class="text-texto/70 text-lg leading-relaxed mb-6">
                             Substituímos o trabalho braçal da sua equipe por processos automatizados. Ao mapear e digitalizar fluxos críticos, removemos os gargalos humanos, reduzimos custos com falhas e permitimos que você tenha tempo para focar exclusivamente na expansão do negócio.
                         </p>
                         <ul class="space-y-3 text-texto/80">
-                            <li class="flex items-start gap-3"><i class="ph ph-check text-acento mt-1"></i> Contratos, faturamentos e processos em piloto automático.</li>
-                            <li class="flex items-start gap-3"><i class="ph ph-check text-acento mt-1"></i> Operação descentralizada e independente da diretoria.</li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-acento mt-1 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                                Contratos, faturamentos e processos em piloto automático.
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-acento mt-1 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                                Operação descentralizada e independente da diretoria.
+                            </li>
                         </ul>
                     </div>
-                    <div class="relative aspect-[4/3] bg-superficie border border-superficie flex items-center justify-center p-12">
-                         <div class="w-full flex gap-4 items-center justify-center">
-                            <div class="w-16 h-16 border border-texto/20 rounded flex items-center justify-center"><i class="ph ph-user text-2xl text-texto/50"></i></div>
-                            <div class="h-[1px] w-12 bg-acento relative"><div class="absolute right-0 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-acento rotate-45"></div></div>
-                            <div class="w-16 h-16 border border-acento rounded flex items-center justify-center bg-acento/10"><i class="ph ph-lightning text-2xl text-acento"></i></div>
-                            <div class="h-[1px] w-12 bg-acento relative"><div class="absolute right-0 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-acento rotate-45"></div></div>
-                            <div class="w-16 h-16 border border-texto/20 rounded flex items-center justify-center"><i class="ph ph-check-circle text-2xl text-texto/50"></i></div>
+                    <div class="relative aspect-[4/3] bg-superficie border border-superficie flex items-center justify-center p-8 md:p-12">
+                         <div class="w-full flex gap-3 sm:gap-4 items-center justify-center">
+                            <div class="w-14 h-14 sm:w-16 sm:h-16 border border-texto/20 rounded flex items-center justify-center">
+                                <svg class="w-6 h-6 text-texto/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+                            </div>
+                            <div class="h-[1px] w-8 sm:w-12 bg-acento relative"><div class="absolute right-0 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-acento rotate-45"></div></div>
+                            <div class="w-14 h-14 sm:w-16 sm:h-16 border border-acento rounded flex items-center justify-center bg-acento/10">
+                                <svg class="w-6 h-6 text-acento" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z"/></svg>
+                            </div>
+                            <div class="h-[1px] w-8 sm:w-12 bg-acento relative"><div class="absolute right-0 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-acento rotate-45"></div></div>
+                            <div class="w-14 h-14 sm:w-16 sm:h-16 border border-texto/20 rounded flex items-center justify-center">
+                                <svg class="w-6 h-6 text-texto/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Solução 3 -->
-                <div class="grid md:grid-cols-2 gap-16 items-center fade-up">
-                    <div class="order-2 md:order-1 relative aspect-[4/3] bg-superficie border border-superficie flex items-center justify-center p-12">
+                <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center fade-up">
+                    <div class="order-2 md:order-1 relative aspect-[4/3] bg-superficie border border-superficie flex items-center justify-center p-8 md:p-12">
                          <div class="w-full h-full border border-acento/20 p-6 flex flex-col gap-4">
                             <div class="flex justify-between items-end h-32 border-b border-acento/20 pb-4">
                                 <div class="w-1/6 bg-texto/10 h-1/3"></div>
@@ -359,36 +277,42 @@
                     </div>
                     <div class="order-1 md:order-2">
                         <div class="text-acento font-mono text-sm mb-4 tracking-wider">03 // INTEGRAÇÃO DE SISTEMAS</div>
-                        <h3 class="text-3xl font-bold mb-6">Visibilidade e Controle Total</h3>
+                        <h3 class="text-2xl md:text-3xl font-bold mb-6">Visibilidade e Controle Total</h3>
                         <p class="text-texto/70 text-lg leading-relaxed mb-6">
                             Acabe com o retrabalho e o lançamento de dados duplicados. Integramos seus ERPs, CRMs e plataformas de pagamento para que conversem entre si. O resultado? Um dashboard gerencial preciso que permite previsibilidade financeira real.
                         </p>
                         <ul class="space-y-3 text-texto/80">
-                            <li class="flex items-start gap-3"><i class="ph ph-check text-acento mt-1"></i> Fim das planilhas frágeis e erros de digitação.</li>
-                            <li class="flex items-start gap-3"><i class="ph ph-check text-acento mt-1"></i> Dados unificados de vendas, estoque e fluxo de caixa.</li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-acento mt-1 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                                Fim das planilhas frágeis e erros de digitação.
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-acento mt-1 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                                Dados unificados de vendas, estoque e fluxo de caixa.
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <div class="mt-24 text-center fade-up">
-                <a href="https://wa.me/5581994034502?text=Ol%C3%A1!%20gostaria%20de%20conhecer%20mais%20sobre%20os%20seus%20servi%C3%A7os" target="_blank" class="inline-flex items-center justify-center gap-2 btn-primary px-8 py-4 rounded-sm font-semibold text-lg hover:scale-105 transition-transform">
-                    <i class="ph ph-whatsapp text-2xl"></i> Quero aplicar este protocolo
+            <div class="mt-16 md:mt-24 text-center fade-up">
+                <a href="https://wa.me/5581994034502?text=Ol%C3%A1!%20gostaria%20de%20conhecer%20mais%20sobre%20os%20seus%20servi%C3%A7os" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 btn-primary px-8 py-4 rounded-sm font-semibold text-lg hover:scale-105 transition-transform">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.08c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.12-.42-.13-.95-.3-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.17-1.56-1.17-2.98s.74-2.11 1-2.4c.26-.29.57-.36.76-.36s.38 0 .55.01c.18.01.41-.07.64.49.24.58.81 2.01.88 2.15.07.15.12.32.02.51-.1.19-.15.31-.3.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.77 1.27 1.65 2.06 1.14 1.02 2.1 1.34 2.39 1.49.29.15.46.13.63-.05.17-.19.71-.83.9-1.11.19-.29.38-.24.63-.14.26.1 1.64.77 1.92.91.29.14.48.21.55.33.07.12.07.68-.17 1.37Z"/></svg>
+                    Quero aplicar este protocolo
                 </a>
             </div>
         </div>
     </section>
 
-    <section id="resultados" class="py-32 bg-superficie/30 border-t border-superficie relative">
+    <section id="resultados" class="py-24 md:py-32 bg-superficie/30 border-t border-superficie relative">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20 fade-up">
+            <div class="text-center mb-16 md:mb-20 fade-up">
                 <span class="text-acento font-mono text-sm mb-4 block tracking-wider">O QUE ENTREGAMOS</span>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">O Código Traduzido em Lucro</h2>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight">O Código Traduzido em Lucro</h2>
                 <p class="text-xl text-texto/70 max-w-2xl mx-auto">Resultados reais alcançados através da estruturação digital e automação em empresas de médio porte.</p>
             </div>
 
-            <div class="grid lg:grid-cols-3 gap-8">
-                <!-- Resultado 1 -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="bg-fundo p-8 border border-superficie rounded-sm flex flex-col h-full fade-up relative group">
                     <div class="absolute top-0 left-0 w-full h-[2px] bg-superficie group-hover:bg-acento transition-colors"></div>
                     <div class="text-acento font-mono text-xs tracking-wider mb-6">01. AUTOMAÇÃO DE PROCESSOS</div>
@@ -402,7 +326,6 @@
                     </div>
                 </div>
 
-                <!-- Resultado 2 -->
                 <div class="bg-fundo p-8 border border-superficie rounded-sm flex flex-col h-full fade-up relative group" style="transition-delay: 100ms;">
                     <div class="absolute top-0 left-0 w-full h-[2px] bg-superficie group-hover:bg-acento transition-colors"></div>
                     <div class="text-acento font-mono text-xs tracking-wider mb-6">02. ESTRATÉGIA E AQUISIÇÃO</div>
@@ -416,8 +339,7 @@
                     </div>
                 </div>
 
-                <!-- Resultado 3 -->
-                <div class="bg-fundo p-8 border border-superficie rounded-sm flex flex-col h-full fade-up relative group" style="transition-delay: 200ms;">
+                <div class="bg-fundo p-8 border border-superficie rounded-sm flex flex-col h-full fade-up relative group md:col-span-2 lg:col-span-1" style="transition-delay: 200ms;">
                     <div class="absolute top-0 left-0 w-full h-[2px] bg-superficie group-hover:bg-acento transition-colors"></div>
                     <div class="text-acento font-mono text-xs tracking-wider mb-6">03. INTEGRAÇÃO DE SISTEMAS</div>
                     <h3 class="text-2xl font-bold mb-4">Sincronização ERP + E-commerce.</h3>
@@ -431,29 +353,30 @@
                 </div>
             </div>
 
-            <div class="mt-20 text-center fade-up">
+            <div class="mt-16 md:mt-20 text-center fade-up">
                 <p class="text-texto/70 mb-6 text-lg">Sua empresa pode ser o próximo caso de sucesso.</p>
-                <a href="https://wa.me/5581994034502?text=Ol%C3%A1!%20gostaria%20de%20conhecer%20mais%20sobre%20os%20seus%20servi%C3%A7os" target="_blank" class="inline-flex items-center justify-center gap-2 btn-primary px-8 py-4 rounded-sm font-semibold text-lg hover:scale-105 transition-transform">
-                    <i class="ph ph-whatsapp text-2xl"></i> Agendar Diagnóstico Gratuito
+                <a href="https://wa.me/5581994034502?text=Ol%C3%A1!%20gostaria%20de%20conhecer%20mais%20sobre%20os%20seus%20servi%C3%A7os" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 btn-primary px-8 py-4 rounded-sm font-semibold text-lg hover:scale-105 transition-transform">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.08c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.12-.42-.13-.95-.3-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.17-1.56-1.17-2.98s.74-2.11 1-2.4c.26-.29.57-.36.76-.36s.38 0 .55.01c.18.01.41-.07.64.49.24.58.81 2.01.88 2.15.07.15.12.32.02.51-.1.19-.15.31-.3.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.77 1.27 1.65 2.06 1.14 1.02 2.1 1.34 2.39 1.49.29.15.46.13.63-.05.17-.19.71-.83.9-1.11.19-.29.38-.24.63-.14.26.1 1.64.77 1.92.91.29.14.48.21.55.33.07.12.07.68-.17 1.37Z"/></svg>
+                    Agendar Diagnóstico Gratuito
                 </a>
             </div>
         </div>
     </section>
 
-    <section id="contato" class="py-32 relative overflow-hidden">
+    <section id="contato" class="py-24 md:py-32 relative overflow-hidden">
         <div class="glow-bg bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2"></div>
         <div class="max-w-3xl mx-auto px-6 text-center relative z-10 fade-up">
             <span class="text-acento font-mono text-sm mb-4 block tracking-wider">O PRÓXIMO PASSO</span>
-            <h2 class="text-4xl md:text-6xl font-bold mb-8 tracking-tight">Pare de apagar incêndios.</h2>
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 tracking-tight">Pare de apagar incêndios.</h2>
             <p class="text-xl text-texto/70 mb-12 leading-relaxed">
                 Agende uma reunião estratégica conosco via WhatsApp. Faremos um diagnóstico profundo da sua operação atual e desenharemos a arquitetura tecnológica necessária para seu negócio voltar a escalar.
             </p>
-            
-            <a href="https://wa.me/5581994034502?text=Ol%C3%A1!%20gostaria%20de%20conhecer%20mais%20sobre%20os%20seus%20servi%C3%A7os" target="_blank" class="inline-flex items-center justify-center gap-3 w-full sm:w-auto btn-primary px-10 py-5 rounded-sm font-bold text-xl hover:scale-105 transition-transform shadow-[0_0_30px_rgba(145,132,217,0.2)]">
-                <i class="ph ph-whatsapp text-3xl"></i>
+
+            <a href="https://wa.me/5581994034502?text=Ol%C3%A1!%20gostaria%20de%20conhecer%20mais%20sobre%20os%20seus%20servi%C3%A7os" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-3 w-full sm:w-auto btn-primary px-10 py-5 rounded-sm font-bold text-xl hover:scale-105 transition-transform shadow-[0_0_30px_rgba(145,132,217,0.2)]">
+                <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.08c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.12-.42-.13-.95-.3-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.17-1.56-1.17-2.98s.74-2.11 1-2.4c.26-.29.57-.36.76-.36s.38 0 .55.01c.18.01.41-.07.64.49.24.58.81 2.01.88 2.15.07.15.12.32.02.51-.1.19-.15.31-.3.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.77 1.27 1.65 2.06 1.14 1.02 2.1 1.34 2.39 1.49.29.15.46.13.63-.05.17-.19.71-.83.9-1.11.19-.29.38-.24.63-.14.26.1 1.64.77 1.92.91.29.14.48.21.55.33.07.12.07.68-.17 1.37Z"/></svg>
                 Solicitar Diagnóstico da Operação
             </a>
-            
+
             <p class="text-sm text-texto/50 mt-8">
                 Sem compromisso. Reunião de 30 minutos focada exclusivamente no seu modelo de negócio.
             </p>
@@ -476,47 +399,6 @@
         </div>
     </footer>
 
-    <script>
-        // --- Controle do Skeleton Loader (Performance de Carregamento) ---
-        // Assim que o navegador baixar as fontes e o script do Tailwind, removemos o skeleton suavemente.
-        window.addEventListener('load', () => {
-            const skeleton = document.getElementById('skeleton-loader');
-            if(skeleton) {
-                skeleton.style.opacity = '0';
-                skeleton.style.visibility = 'hidden';
-                setTimeout(() => skeleton.remove(), 400); // Limpa o DOM
-            }
-        });
-
-        // Fallback de segurança: se a rede do cliente travar e demorar, o site aparece de qualquer forma após 2.5s
-        setTimeout(() => {
-            const skeleton = document.getElementById('skeleton-loader');
-            if(skeleton && skeleton.style.opacity !== '0') {
-                skeleton.style.opacity = '0';
-                setTimeout(() => skeleton.remove(), 400);
-            }
-        }, 2500);
-
-        // Simple Intersection Observer for scroll animations
-        document.addEventListener('DOMContentLoaded', () => {
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            const fadeElements = document.querySelectorAll('.fade-up');
-            fadeElements.forEach(el => observer.observe(el));
-        });
-    </script>
+    <script src="main.js" defer></script>
 </body>
 </html>
